@@ -1,0 +1,27 @@
+
+
+<div *ngIf="products.length !== 0; then tableBlock else emptyBlock"></div>
+<ng-template #tableBlock>
+    Products you bought:
+    <br>
+    <table *ngIf="products.length !== 0">
+        <thead>
+            <th>Number</th>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Rate</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products; let i = index">
+                <td>{{i}}</td>
+                <td>{{product.Id}}</td>
+                <td>{{product.Name}}</td>
+                <td>{{product.Price}}</td>
+                <td>{{product.Rate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
+
+<ng-template #emptyBlock>You did not bought any product</ng-template>

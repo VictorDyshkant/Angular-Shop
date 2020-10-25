@@ -1,4 +1,3 @@
-
 <table>
     <thead>
         <th>Number</th>
@@ -11,11 +10,13 @@
     <tbody>
         <tr *ngFor="let product of products$ | async; let i = index">
             <td>{{i}}</td>
-            <td>{{product.Id}}</td>
-            <td>{{product.Name}}</td>
-            <td>{{product.Price}}</td>
-            <td>{{product.Rate}}</td>
-            <td><app-product-component [product] = "product"></app-product-component></td>
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.rate}}</td>
+            <td>
+                <button [disabled] ="!product.isAvailable" (click)="onBuy(product)">Buy</button>
+            </td>
         </tr>
     </tbody>
 </table>

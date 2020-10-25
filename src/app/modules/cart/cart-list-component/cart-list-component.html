@@ -2,7 +2,7 @@
 
 
 <ng-template #tableBlock>
-    <div highlight >Quantity: {{count}}; Total amount: {{amount}}$</div>
+    <div>Quantity: {{count}}; Total amount: {{amount}}$</div>
     Products you bought:
     <br>
     <table *ngIf="boughtProducts.length !== 0">
@@ -15,7 +15,7 @@
             <th>Quantity</th>
         </thead>
         <tbody>
-            <tr *ngFor="let boughtProduct of boughtProducts; let i = index">
+            <tr *ngFor="let boughtProduct of boughtProducts; let i = index" appHighlight>
                 <td>{{i}}</td>
                 <td>{{boughtProduct.product.id}}</td>
                 <td>{{boughtProduct.product.name}}</td>
@@ -29,3 +29,4 @@
 </ng-template>
 
 <ng-template #emptyBlock>You did not bought any product</ng-template>
+

@@ -21,7 +21,6 @@ export class CartListComponent implements OnInit {
   }
 
   changeQuantity(product: ProductModel, quantity: number) {
-    console.log(quantity);
     this.cartService.setQuantity(product, quantity);
   }
 

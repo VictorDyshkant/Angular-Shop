@@ -1,24 +1,29 @@
-import {Directive, ElementRef, Renderer2, HostListener} from '@angular/core';
- 
+import { Directive, ElementRef, HostListener, HostBinding } from '@angular/core';
+
 @Directive({
-    selector: 'highlight'
+    selector: '[appHighlight]'
 })
-export class HighlightDirective{
-     
-    constructor(private element: ElementRef,private renderer: Renderer2){
-        this.renderer.setStyle(this.element.nativeElement, "cursor", "pointer");
+export class HighlightDirective {
+
+    @HostBinding('class')
+    attrClass = 'highlighting';
+   
+    private color = 'lightgreen';
+
+    constructor(private element: ElementRef) { }
+
+    @HostListener('mouseenter')
+    onMouseEnter(): void {
+        this.setBackgroundColor(this.color);
     }
 
-    ngOnInit() {
-        console.log('Directive called');
-      }
-     
-    @HostListener("mouseover") onMouseOver() {
-        this.element.nativeElement.style.backgroundColor = "red";
+    @HostListener('mouseleave')
+    onMouseLeave(): void {
+        this.setBackgroundColor(null);
     }
 
-    @HostListener("click") onClick() {
-        this.element.nativeElement.style.backgroundColor = "red";
+    private setBackgroundColor(color: string): void {
+        this.element.nativeElement.style.backgroundColor = color;
     }
 }
 

@@ -10,7 +10,7 @@ export class AppComponent implements AfterViewInit{
   @ViewChild('appTitle') title: ElementRef<HTMLElement>;
 
   ngAfterViewInit(){
-    this.title.nativeElement.innerText = "Angular-Shop";
+    this.title.nativeElement.innerText = 'Angular-Shop';
 
   }
 

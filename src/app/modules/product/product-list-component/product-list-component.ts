@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ProductService } from 'src/app/modules/product/services/products.service';
 import { ProductModel } from 'src/app/models/product.model';
-import { CartService } from 'src/app/services/cart.service';
-import { ProductService } from 'src/app/services/products.service';
+import { CartService } from 'src/app/modules/cart/services/cart.service';
 
 @Component({
   selector: 'app-product-list-component',

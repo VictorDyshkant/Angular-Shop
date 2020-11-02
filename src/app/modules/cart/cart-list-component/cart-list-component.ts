@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BoughtProductModel } from 'src/app/models/boughtProduct.model';
+import { BoughtProductModel } from 'src/app/models/bought-product.model';
 import { ProductModel } from 'src/app/models/product.model';
-import { CartService } from 'src/app/services/cart.service';
+import { CartService } from 'src/app/modules/cart/services/cart.service';
 
 @Component({
   selector: 'app-cart-list-component',
@@ -13,7 +13,6 @@ export class CartListComponent implements OnInit {
   boughtProducts: Array<BoughtProductModel>;
 
   constructor(private cartService: CartService) {
-
   }
 
   ngOnInit(): void {
@@ -21,15 +20,15 @@ export class CartListComponent implements OnInit {
   }
 
   changeQuantity(product: ProductModel, quantity: number) {
-    this.cartService.setQuantity(product, quantity);
+    this.cartService.setQuantity(product, +quantity);
   }
 
   get count(): number {
-    return this.cartService.count;
+    return this.cartService.totalQuantity;
   }
 
   get amount(): number {
-    return this.cartService.amount;
+    return this.cartService.totalSum;
   }
 
 }

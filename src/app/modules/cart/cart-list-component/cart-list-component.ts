@@ -1,4 +1,6 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { BoughtProductModel } from 'src/app/models/bought-product.model';
 import { ProductModel } from 'src/app/models/product.model';
 import { CartService } from 'src/app/modules/cart/services/cart.service';
@@ -10,13 +12,13 @@ import { CartService } from 'src/app/modules/cart/services/cart.service';
 })
 export class CartListComponent implements OnInit {
 
-  boughtProducts: Array<BoughtProductModel>;
+  $boughtProducts: Observable<Array<BoughtProductModel>>;
 
   constructor(private cartService: CartService) {
   }
 
   ngOnInit(): void {
-    this.boughtProducts = this.cartService.getProducts();
+    this.$boughtProducts = this.cartService.getProducts();
   }
 
   changeQuantity(product: ProductModel, quantity: number) {
@@ -31,4 +33,10 @@ export class CartListComponent implements OnInit {
     return this.cartService.totalSum;
   }
 
+  get lastModifiedDate(): Date {
+    return this.cartService.lastModifiedDate;
+  }
+
+  // used empty event to trigger my pipe after changing settings, I think that it is bad but do not have any idea how to improve it
+  change() { }
 }

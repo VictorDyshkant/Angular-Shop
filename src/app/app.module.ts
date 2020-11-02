@@ -11,6 +11,7 @@ import { ProductModule } from './modules/product/product.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { ProductService } from './modules/product/services/products.service';
 import { FirstModule } from './modules/first/first.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { FirstModule } from './modules/first/first.module';
     OrdersModule,
     ProductModule,
     FirstModule,
-    SharedModule
+    CommonModule
   ],
   providers: [ProductService, CartService],
   bootstrap: [AppComponent]

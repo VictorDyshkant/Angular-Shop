@@ -1,11 +1,28 @@
-<div *ngIf="boughtProducts.length !== 0; then tableBlock else emptyBlock"></div>
+<div *ngIf="count !== 0; then tableBlock else emptyBlock"></div>
 
 
 <ng-template #tableBlock>
     <div>Quantity: {{count}}; Total amount: {{amount}}$</div>
+    <div>Last modified : {{lastModifiedDate | date:'medium'}}</div>
     Products you bought:
     <br>
-    <table *ngIf="boughtProducts.length !== 0">
+    <br>
+
+    <select #option (change)="change()">
+        <option value="id">Id</option>
+        <option value="name">Name</option>
+        <option value="price">Price</option>
+        <option value="rate">Rate</option>
+    </select>
+
+    <!-- used empty event to trigger my pipe after changing settings, I think that it is bad but do not have any idea -->
+    <input #sortType type="checkbox" id="checkbox" (change)="change()" style="width: 20px;"> 
+    <label for="checkbox">Descending</label>
+
+    <br>
+    <br>
+
+    <table *ngIf="count !== 0">
         <thead>
             <th>Number</th>
             <th>Product ID</th>
@@ -15,11 +32,11 @@
             <th>Quantity</th>
         </thead>
         <tbody>
-            <tr *ngFor="let boughtProduct of boughtProducts; let i = index" appHighlight>
+            <tr *ngFor="let boughtProduct of ($boughtProducts | orderBy : option.value : sortType.checked | async); let i = index" appHighlight>
                 <td>{{i}}</td>
                 <td>{{boughtProduct.product.id}}</td>
-                <td>{{boughtProduct.product.name}}</td>
-                <td>{{boughtProduct.product.price}}</td>
+                <td>{{boughtProduct.product.name | uppercase}} </td>
+                <td>{{boughtProduct.product.price | currency}}</td>
                 <td>{{boughtProduct.product.rate}}</td>
                 <td><input type="number" min="0" [value]="boughtProduct.quantity"
                         (change)="changeQuantity(boughtProduct.product,$event.target.value)"></td>
@@ -29,4 +46,3 @@
 </ng-template>
 
 <ng-template #emptyBlock>You did not bought any product</ng-template>
-

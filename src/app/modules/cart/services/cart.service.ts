@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { observable, Observable, of } from 'rxjs';
 import { BoughtProductModel } from '../../../models/bought-product.model';
 import { ProductModel } from '../../../models/product.model';
 
@@ -8,6 +9,7 @@ export class CartService {
     private counter = 0;
     private totalAmount = 0;
     private isEmptyList = true;
+    private lastModified = new Date();
 
     addProduct(product: ProductModel): void {
         if (this.contains(product)) {
@@ -51,8 +53,8 @@ export class CartService {
         this.updateCartData();
     }
 
-    getProducts(): Array<BoughtProductModel> {
-        return this.products;
+    getProducts(): Observable<Array<BoughtProductModel>> {
+        return of(this.products);
     }
 
     contains(product: ProductModel): boolean {
@@ -76,6 +78,10 @@ export class CartService {
         return this.isEmptyList;
     }
 
+    get lastModifiedDate(): Date {
+        return this.lastModified;
+    }
+
     private updateCartData(): void {
         this.counter = 0;
         this.totalAmount = 0;
@@ -84,11 +90,13 @@ export class CartService {
             this.totalAmount += element.quantity * element.product.price;
         });
 
-        if (this.counter == 0){
+        if (this.counter === 0){
             this.isEmptyList = true;
         }else{
             this.isEmptyList = false;
         }
+
+        this.lastModified = new Date();
     }
 
     private getBoughtProductByProduct(product: ProductModel): BoughtProductModel {

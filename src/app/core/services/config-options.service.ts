@@ -6,7 +6,8 @@ export class ConfigOptionsService {
     private config: ConfigModel;
 
     setConfig(config: ConfigModel): void {
-        this.config = config;
+      // это будет полная замена, если требуется доустановка свойств, то лучше или спред оператор или Object.assign использовать
+      this.config = config;
     }
 
     getConfig(): ConfigModel {

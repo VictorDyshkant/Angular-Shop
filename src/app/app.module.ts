@@ -11,7 +11,7 @@ import { ProductModule } from './modules/product/product.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { ProductService } from './modules/product/services/products.service';
 import { FirstModule } from './modules/first/first.module';
-import { CommonModule } from '@angular/common';
+// import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { CommonModule } from '@angular/common';
     OrdersModule,
     ProductModule,
     FirstModule,
-    CommonModule
+    // CommonModule // этот модуль включен в BrowserModule
   ],
   providers: [ProductService, CartService],
   bootstrap: [AppComponent]

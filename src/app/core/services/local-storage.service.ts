@@ -10,6 +10,7 @@ export class LocalStorageService {
   }
 
   getItem(key: string): string {
+    // если сохраняли объект, то и возвращать надо объект
     return this.storage.getItem(key);
   }
 

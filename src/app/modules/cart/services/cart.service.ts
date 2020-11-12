@@ -57,6 +57,7 @@ export class CartService {
         return of(this.products);
     }
 
+    // наверное вспомагательный приватный метод?
     contains(product: ProductModel): boolean {
         return this.getBoughtProductByProduct(product) != null;
     }

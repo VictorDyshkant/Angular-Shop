@@ -1,13 +1,18 @@
-import { Component, Optional } from '@angular/core';
+import { Component, InjectionToken, Optional } from '@angular/core';
 
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { ConstantsService } from 'src/app/core/services/constant.service';
 import { GeneratorService } from 'src/app/core/services/generator';
 import { ConfigOptionsService } from 'src/app/core/services/config-options.service';
 
-function generatorFactory() {
-  return new GeneratorService();
+export function generatorFactory(n: number) {
+  return (generatorService: GeneratorService ) => {
+    // должны возвращать не сервис, а результат работы сервиса
+    return generatorService.generate(n);
+  };
 }
+
+const genToken = new InjectionToken<string>('token');
 
 @Component({
   selector: 'app-first',
@@ -17,7 +22,8 @@ function generatorFactory() {
     { provide: LocalStorageService, useClass: LocalStorageService },
     { provide: ConfigOptionsService, useClass: ConfigOptionsService },
     { provide: ConstantsService, useValue: { App: 'TaskManager', Ver: '1.0', API_URL: 'http://...' } },
-    { provide: GeneratorService, useFactory: generatorFactory, deps: [] },
+
+    { provide: genToken, useFactory: generatorFactory(5), deps: [GeneratorService] },
   ]
 })
 export class FirstComponent {

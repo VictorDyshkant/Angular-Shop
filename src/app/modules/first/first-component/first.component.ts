@@ -22,7 +22,6 @@ const genToken = new InjectionToken<string>('token');
     { provide: LocalStorageService, useClass: LocalStorageService },
     { provide: ConfigOptionsService, useClass: ConfigOptionsService },
     { provide: ConstantsService, useValue: { App: 'TaskManager', Ver: '1.0', API_URL: 'http://...' } },
-
     { provide: genToken, useFactory: generatorFactory(5), deps: [GeneratorService] },
   ]
 })

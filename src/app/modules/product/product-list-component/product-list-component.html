@@ -1,2 +1,5 @@
-
-<app-product-component [products$]=products$ (buyProduct)="onBuy($event)"></app-product-component>
+<div class='product__list'>
+    <a *ngFor='let product of products$ | async'>
+        <app-product-component [product]=product [isAdmin]=isAdmin></app-product-component>
+    </a>
+</div>

@@ -1,9 +1,9 @@
-<div *ngIf="count !== 0; then tableBlock else emptyBlock"></div>
-
+<div class="content">
+    <div *ngIf="count !== 0; then tableBlock else emptyBlock"></div>
+</div>
 
 <ng-template #tableBlock>
     <div>Quantity: {{count}}; Total amount: {{amount}}$</div>
-    <div>Last modified : {{lastModifiedDate | date:'medium'}}</div>
     Products you bought:
     <br>
     <br>
@@ -16,7 +16,7 @@
     </select>
 
     <!-- used empty event to trigger my pipe after changing settings, I think that it is bad but do not have any idea -->
-    <input #sortType type="checkbox" id="checkbox" (change)="change()" style="width: 20px;"> 
+    <input #sortType type="checkbox" id="checkbox" (change)="change()" style="width: 20px;">
     <label for="checkbox">Descending</label>
 
     <br>
@@ -30,9 +30,11 @@
             <th>Price</th>
             <th>Rate</th>
             <th>Quantity</th>
+            <th>Product</th>
         </thead>
         <tbody>
-            <tr *ngFor="let boughtProduct of ($boughtProducts | orderBy : option.value : sortType.checked | async); let i = index" appHighlight>
+            <tr *ngFor="let boughtProduct of ($boughtProducts | orderBy : option.value : sortType.checked | async); let i = index;"
+                appHighlight>
                 <td>{{i}}</td>
                 <td>{{boughtProduct.product.id}}</td>
                 <td>{{boughtProduct.product.name | uppercase}} </td>
@@ -40,6 +42,7 @@
                 <td>{{boughtProduct.product.rate}}</td>
                 <td><input type="number" min="0" [value]="boughtProduct.quantity"
                         (change)="changeQuantity(boughtProduct.product,$event.target.value)"></td>
+                <td><a [routerLink]="'/pruduct/'+boughtProduct.product.id">Product</a></td>
             </tr>
         </tbody>
     </table>

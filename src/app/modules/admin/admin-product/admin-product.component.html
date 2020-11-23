@@ -1,0 +1,29 @@
+<div class="product__container">
+    <div class="img">
+        <img [src]=product.img>
+    </div>
+    <div class="product__data">
+        <form #form='ngForm'>
+            <div>
+                <label for="Name">Product Name: </label>
+                <input class="name" id="Name" name ="Name" [value]=product.name required [(ngModel)]="product.name">
+            </div>
+            <div>
+                <label for="Price">Price: </label>
+                <input class="price" id="Price" name ="Price" [value]=product.price required [(ngModel)]="product.price">
+            </div>
+            <div>
+                <label for="Rate">Rate: </label>
+                <input class="rate" id="Rate" name ="Rate" [value]=product.rate required [(ngModel)]="product.rate">
+            </div>
+            <div>
+                <label for="Description">Description: </label>
+                <textarea class="description" id="Description" name ="Description" [value]=product.description required
+                    [(ngModel)]="product.description"></textarea>
+            </div>
+
+            <button class="btn" [ngClass]="{'disabled__btn':form.invalid}" [disabled]="form.invalid"
+                (click)='onSave()'>Save</button>
+        </form>
+    </div>
+</div>

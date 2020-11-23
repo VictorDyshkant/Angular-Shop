@@ -1,7 +1,5 @@
-import { EventEmitter } from '@angular/core';
-import { Component, Input, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ProductModel } from 'src/app/models/product.model';
+import { Component, Input } from '@angular/core';
+import { ProductModel } from 'src/app/modules/product/models/product.model';
 
 @Component({
   selector: 'app-product-component',
@@ -10,13 +8,9 @@ import { ProductModel } from 'src/app/models/product.model';
 })
 export class ProductComponent {
 
-  @Input() products$: Observable<Array<ProductModel>>;
-  @Output() buyProduct = new EventEmitter<ProductModel>();
+  @Input() isAdmin: boolean;
+  @Input() product: ProductModel;
 
   constructor() {
-  }
-
-  onBuy(product: ProductModel) {
-    this.buyProduct.emit(product);
   }
 }

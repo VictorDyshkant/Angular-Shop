@@ -1,0 +1,13 @@
+<div class="product__container">
+    <div class="img">
+        <img [src]=product.img>
+    </div>
+    <div class="product__data">
+        <p class="name">{{product.name}}</p>
+        <p class="price">{{product.price}}$</p>
+        <p class="rate">Rate: {{product.rate}}/5</p>
+        <p class="description">{{product.description}}</p>
+        <button *ngIf=!isInBucket class="btn" (click)='onBuy()'>Buy</button>
+        <button *ngIf=isInBucket class='btn disabled__btn'>Bought</button>
+    </div>
+</div>

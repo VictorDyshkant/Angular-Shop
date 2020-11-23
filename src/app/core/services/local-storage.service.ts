@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({ providedIn: "root" })
 export class LocalStorageService {
   private storage = window.localStorage;
 
@@ -9,9 +9,13 @@ export class LocalStorageService {
     this.storage.setItem(key, serializedValue);
   }
 
-  getItem(key: string): string {
-    // если сохраняли объект, то и возвращать надо объект
-    return this.storage.getItem(key);
+  getItem(key: string): object | string {
+    const obj = this.storage.getItem(key);
+    if (obj == null) {
+      return null;
+    }
+
+    return JSON.parse(obj);
   }
 
   removeItem(key: string): void {

@@ -2,7 +2,7 @@ import { Pipe } from '@angular/core';
 import { PipeTransform } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { BoughtProductModel } from 'src/app/models/bought-product.model';
+import { BoughtProductModel } from 'src/app/modules/product/models/bought-product.model';
 
 @Pipe({
     name: 'orderBy',

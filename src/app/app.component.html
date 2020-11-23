@@ -1,13 +1,23 @@
-<div class="container">
-    <app-first></app-first>
-    <br>
-    <h1 #appTitle></h1>
-    <br>
-    <br>
-    <br>
-    <app-product-list-component></app-product-list-component>
-    <br>
-    <br>
-    <br>
-    <app-cart-list-component></app-cart-list-component>
+<div class="nav">
+    <nav *ngIf="isAdmin" class="menu">
+        <ul>
+          <li><h1>Angular Shop</h1></li>
+          <li><a routerLinkActive="active" routerLink="/productList">Product List</a></li>
+          <li><a routerLinkActive="active" routerLink="/admin/orders">Orders</a></li>
+          <li><a routerLinkActive="active" routerLink="/admin/product/add">Add Product</a></li>
+        </ul>
+    </nav>
+    <nav *ngIf="!isAdmin" class="menu">
+      <ul>
+        <li><h1>Angular Shop</h1></li>
+        <li><a routerLinkActive="active" routerLink="/productList">Product List</a></li>
+        <li><a routerLinkActive="active" routerLink="/cart">Bucket</a></li>
+        <li><a routerLinkActive="active" routerLink="/order">Create Order</a></li>
+      </ul>
+  </nav>
 </div>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+

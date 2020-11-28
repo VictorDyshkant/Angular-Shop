@@ -20,6 +20,7 @@ export class ProductViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // может предусмотреть дефолтные значения? или задавать значения объектом
     this.product = new ProductModel(null, null, null, null, null, null);
     this.isInBucket = false;
 

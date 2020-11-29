@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { CartService } from '../../cart/services/cart.service';
 import { OrderModel } from '../models/order.model';
-import { OrderService } from './services/order.service';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-order',

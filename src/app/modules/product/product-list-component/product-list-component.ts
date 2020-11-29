@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/modules/product/services/products.service';
 import { ProductModel } from 'src/app/modules/product/models/product.model';
-import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class ProductListComponent implements OnInit {
   products$: Observable<Array<ProductModel>>;
 
   constructor(private productService: ProductService,
-        private authService: AuthService) {
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {

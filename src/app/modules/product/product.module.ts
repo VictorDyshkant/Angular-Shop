@@ -5,6 +5,7 @@ import { ProductListComponent } from './product-list-component/product-list-comp
 
 import { Routes, RouterModule } from '@angular/router';
 import { ProductViewComponent } from './product-view/product-view.component';
+import { ProductService } from './services/products.service';
 
 
 const routes: Routes = [
@@ -31,6 +32,9 @@ const routes: Routes = [
   exports: [
     ProductListComponent,
     RouterModule
+  ],
+  providers:[
+    ProductService,
   ]
 })
 export class ProductModule { }

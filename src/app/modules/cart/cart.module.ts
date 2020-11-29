@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CartListComponent } from './cart-list-component/cart-list-component';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from 'src/app/core/shared.module';
+import { CartService } from './services/cart.service';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
   {
@@ -20,6 +21,9 @@ const routes: Routes = [
   ],
   exports: [
     CartListComponent
+  ],
+  providers: [
+    CartService
   ]
 })
 export class CartModule { }

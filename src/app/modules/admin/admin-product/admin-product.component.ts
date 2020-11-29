@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { pluck, switchMap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { pluck } from 'rxjs/operators';
 import { ProductModel } from '../../product/models/product.model';
 import { ProductService } from '../../product/services/products.service';
 
@@ -9,13 +10,16 @@ import { ProductService } from '../../product/services/products.service';
   templateUrl: './admin-product.component.html',
   styleUrls: ['./admin-product.component.less']
 })
-export class AdminProductComponent implements OnInit {
+export class AdminProductComponent implements OnInit, OnDestroy {
 
-  product: ProductModel;
+  public product: ProductModel;
+  private sub: Subscription;
+
   constructor(private activateRoute: ActivatedRoute,
     private productService: ProductService,
     private router: Router) {
   }
+
 
   ngOnInit(): void {
     this.activateRoute.data.pipe(pluck('product')).subscribe((product: ProductModel) => {
@@ -23,15 +27,21 @@ export class AdminProductComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
+  }
+
   onSave() {
-    
-    console.log(this.product);
     if (this.product.id == null) {
-      this.productService.addProduct(this.product);
+      this.productService.addProduct(this.product)
+        .then(next => this.product = next);
     } else {
-      this.productService.updateProduct(this.product.id, this.product);
+      this.sub = this.productService.updateProduct(this.product)
+        .subscribe(
+          next => this.product = next
+        );
     }
-    
+
     this.router.navigate(['/productList']);
   }
 }

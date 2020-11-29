@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ClickDirective } from './directives/click.directive';
 import { HighlightDirective } from './directives/highlight.directive';
+import { ClickDirective } from './directives/click.directive';
 import { OrderByPipe } from './pipes/order-by.pipe';
-
 
 @NgModule({
   declarations: [
@@ -19,6 +18,7 @@ import { OrderByPipe } from './pipes/order-by.pipe';
     ClickDirective,
     OrderByPipe,
     CommonModule
-  ]
+  ],
+  providers: []
 })
 export class SharedModule { }

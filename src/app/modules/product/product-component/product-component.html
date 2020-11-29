@@ -1,6 +1,9 @@
 <div class="product__container">
     <div class="img">
-        <a [routerLink]='["/pruduct",product.id]'>
+        <a *ngIf="!isAdmin" [routerLink]='["/product",product.id]'>
+            <img [src]='product.img'>
+        </a>
+        <a *ngIf="isAdmin" [routerLink]='["/admin/product/edit",product.id]'>
             <img [src]='product.img'>
         </a>
     </div>

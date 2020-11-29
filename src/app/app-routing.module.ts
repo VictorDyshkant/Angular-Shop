@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/productList',
-    pathMatch: 'prefix' // 'full'?
+    pathMatch: 'full'
   }
 ];
 

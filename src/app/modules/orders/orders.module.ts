@@ -4,6 +4,7 @@ import { OrderComponent } from './order.component/order.component';
 import { CartModule } from '../cart/cart.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { OrderService } from './services/order.service';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     CartModule,
     FormsModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  providers: [OrderService]
 })
 export class OrdersModule { }

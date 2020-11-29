@@ -23,3 +23,11 @@ Routing
 6. added resolve guard to product-form component
 7. applied lazy loading to admin module
 8. changed cart service to store cart items in the local storage
+
+HttpClient
+1. added json-server
+2. changed command start in package.json
+3. implemented ProductsService with Promises and Observables
+4. implemented interceptor for requests which includes 'products'
+5. implemented AppSettingsService
+6. Moved out Shared Folder

@@ -26,7 +26,7 @@ const routes: Routes = [
     path: 'orders',
     component: AdminOrdersComponent
   }
-]
+];
 
 
 @NgModule({

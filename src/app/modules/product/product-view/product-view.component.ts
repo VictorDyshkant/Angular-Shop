@@ -15,20 +15,23 @@ export class ProductViewComponent implements OnInit {
   isInBucket: boolean;
   product: ProductModel;
   constructor(private activateRoute: ActivatedRoute,
-              private productService: ProductService,
-              private cartService: CartService) {
+    private productService: ProductService,
+    private cartService: CartService) {
   }
 
   ngOnInit(): void {
     // может предусмотреть дефолтные значения? или задавать значения объектом
-    this.product = new ProductModel(null, null, null, null, null, null);
+    this.product = { ...this.product }; // new ProductModel(null, null, null, null, null, null);
     this.isInBucket = false;
 
     this.activateRoute.paramMap.pipe(
-      switchMap(params => params.getAll('productId'))
-    ).subscribe(productId => {
-      if (productId != null) {
-        this.product = this.productService.getProductById(+productId);
+      switchMap(params => {
+        const productId = params.get('productId');
+        return this.productService.getProductById(+productId);
+      })
+    ).subscribe(product => {
+      if (product != null) {
+        this.product = product;
         this.isInBucket = this.cartService.contains(this.product);
       }
     });

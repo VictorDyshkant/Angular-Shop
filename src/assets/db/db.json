@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Apple iPhone Xs 128GB White",
+      "price": 800,
+      "rate": 4.5,
+      "img": "assets/images/iphoneXs.jpg",
+      "description": "Дисплей Super Retina XDR 6,1 дюйма Неймовірно міцна передня панель Ceramic ShieldA14 Bionic, найшвидший процесор iPhoneПередова система двох камер 12 Мп: надширококутна і ширококутна; Нічний режим, технологія Deep Fusion, режим Smart HDR 3, знімання HDR-відео 4K у стандарті Dolby VisionФронтальна камера TrueDepth 12 Мп: Нічний режим, знімання HDR-відео 4K у стандарті Dolby VisionНадійний захист від води (IP68)4"
+    },
+    {
+      "id": 2,
+      "name": "Apple iPhone 12 128GB Blue",
+      "price": 1000,
+      "rate": 4.2,
+      "img": "assets/images/iphone12.jpg",
+      "description": "Дисплей Super Retina XDR 6,1 дюйма Неймовірно міцна передня панель Ceramic ShieldA14 Bionic, найшвидший процесор iPhoneПередова система двох камер 12 Мп: надширококутна і ширококутна; Нічний режим, технологія Deep Fusion, режим Smart HDR 3, знімання HDR-відео 4K у стандарті Dolby VisionФронтальна камера TrueDepth 12 Мп: Нічний режим, знімання HDR-відео 4K у стандарті Dolby VisionНадійний захист від води (IP68)4"
+    },
+    {
+      "id": 3,
+      "name": "Apple iPhone 12 128GB Black",
+      "price": "899",
+      "rate": 4.3,
+      "img": "assets/images/iphoneXr.jpg",
+      "description": "Дисплей Super Retina XDR 6,1 дюйма Неймовірно міцна передня панель Ceramic ShieldA14 Bionic, найшвидший процесор iPhoneПередова система двох камер 12 Мп: надширококутна і ширококутна; Нічний режим, технологія Deep Fusion, режим Smart HDR 3, знімання HDR-відео 4K у стандарті Dolby VisionФронтальна камера TrueDepth 12 Мп: Нічний режим, знімання HDR-відео 4K у стандарті Dolby VisionНадійний захист від води (IP68)4"
+    },
+    {
+      "id": 4,
+      "name": "Apple iPhone 11 Pro 128GB Gray",
+      "price": "1000",
+      "rate": "4.4",
+      "img": "assets/images/iphone11Pro.jpg",
+      "description": "Дисплей Super Retina XDR 6,1 дюйма Неймовірно міцна передня панель Ceramic ShieldA14 Bionic, найшвидший процесор iPhoneПередова система двох камер 12 Мп: надширококутна і ширококутна; Нічний режим, технологія Deep Fusion, режим Smart HDR 3, знімання HDR-відео 4K у стандарті Dolby VisionФронтальна камера TrueDepth 12 Мп: Нічний режим, знімання HDR-відео 4K у стандарті Dolby VisionНадійний захист від води (IP68)4"
+    },
+    {
+      "id": 5,
+      "name": "Apple iPhone 8 128GB White",
+      "price": 500,
+      "rate": 4.3,
+      "img": "assets/images/iphone8.jpg",
+      "description": "Дисплей Super Retina XDR 6,1 дюйма Неймовірно міцна передня панель Ceramic ShieldA14 Bionic, найшвидший процесор iPhoneПередова система двох камер 12 Мп: надширококутна і ширококутна; Нічний режим, технологія Deep Fusion, режим Smart HDR 3, знімання HDR-відео 4K у стандарті Dolby VisionФронтальна камера TrueDepth 12 Мп: Нічний режим, знімання HDR-відео 4K у стандарті Dolby VisionНадійний захист від води (IP68)4"
+    },
+    {
+      "id": 6,
+      "name": "Apple Iphone 6s 64GB",
+      "price": "499",
+      "rate": "4.1",
+      "img": "assets/images/iphoneXs.jpg",
+      "description": "Good"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from './core/services/auth.service';
+import { AppSettingsService } from './core/services/app.settings.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,11 @@ import { AuthService } from './core/services/auth.service';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit {
-
   isAdmin: boolean;
 
-  constructor(private authService: AuthService) { 
-    
+  constructor(private authService: AuthService,
+    private appSettingsService: AppSettingsService) {
+      appSettingsService.getSettings();
   }
 
   ngOnInit(): void {

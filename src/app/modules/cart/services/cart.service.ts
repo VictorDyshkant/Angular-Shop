@@ -14,7 +14,7 @@ export class CartService {
     private isEmptyList = true;
 
     constructor(private localStorageService: LocalStorageService,
-                private productService: ProductService) {
+        private productService: ProductService) {
         this.selectProducts();
     }
 
@@ -107,8 +107,9 @@ export class CartService {
         const products = this.localStorageService.getItem(this.key) as Array<BoughtProductModel>;
         if (products != null) {
             products.forEach(product => {
-                const boughtProduct = this.productService.getProductById(product.product.id);
-                this.products.push(new BoughtProductModel(boughtProduct, product.quantity));
+                this.productService
+                    .getProductById(product.product.id)
+                    .then(x => this.products.push(new BoughtProductModel(x, product.quantity)));
             });
             this.updateAndSaveCartData();
         }

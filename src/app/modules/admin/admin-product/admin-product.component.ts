@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 import { ProductModel } from '../../product/models/product.model';
-import { ProductService } from '../../product/services/products.service';
+import * as ProductActions from 'src/app/ng.rx/products/products.actions';
+import * as RouterActions from 'src/app/ng.rx/router/router.actions';
 
 @Component({
   selector: 'app-admin-product',
@@ -16,15 +18,15 @@ export class AdminProductComponent implements OnInit, OnDestroy {
   private sub: Subscription;
 
   constructor(private activateRoute: ActivatedRoute,
-    private productService: ProductService,
-    private router: Router) {
+    private store: Store) {
   }
 
 
   ngOnInit(): void {
     this.activateRoute.data.pipe(pluck('product')).subscribe((product: ProductModel) => {
-      this.product = product;
+      this.product = {...product};
     });
+
   }
 
   ngOnDestroy(): void {
@@ -33,15 +35,11 @@ export class AdminProductComponent implements OnInit, OnDestroy {
 
   onSave() {
     if (this.product.id == null) {
-      this.productService.addProduct(this.product)
-        .then(next => this.product = next);
+      this.store.dispatch(ProductActions.createProduct({ product: this.product }));
     } else {
-      this.sub = this.productService.updateProduct(this.product)
-        .subscribe(
-          next => this.product = next
-        );
+      this.store.dispatch(ProductActions.updateProduct({ product: this.product }));
     }
 
-    this.router.navigate(['/productList']);
+    this.store.dispatch(RouterActions.go({ path: ['/productList'] }));
   }
 }

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { httpInterceptorProviders } from './core/interceptors';
+import { NgRxModule } from './ng.rx/ng.rx.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { httpInterceptorProviders } from './core/interceptors';
     ProductModule,
     FirstModule,
     AppRoutingModule,
+    NgRxModule
   ],
   providers: [
     httpInterceptorProviders

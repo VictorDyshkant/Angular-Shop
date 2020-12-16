@@ -67,7 +67,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "Angular-Shop:build",
-            "evalSourceMap" : false
+            "evalSourceMap": false
           },
           "configurations": {
             "production": {
@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Angular-Shop"
+    }
+  },
+  "defaultProject": "Angular-Shop",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

@@ -6,7 +6,7 @@ import { delay, tap } from 'rxjs/operators';
 @Injectable({providedIn: 'root'})
 export class AuthService {
   isLoggedIn = true;
-  isAdmin = true;
+  isAdmin = false;
 
   login(): Observable<boolean> {
     return of(true).pipe(

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {  Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { CartService } from '../../cart/services/cart.service';
 import { OrderModel } from '../models/order.model';
 import { OrderService } from '../services/order.service';
+import * as RouterActions from 'src/app/ng.rx/router/router.actions';
 
 @Component({
   selector: 'app-order',
@@ -14,7 +15,7 @@ export class OrderComponent implements OnInit {
   order: OrderModel;
   constructor(private cartService: CartService,
               private orderService: OrderService,
-              private router: Router) {
+              private store: Store) {
   }
 
   ngOnInit(): void {
@@ -26,6 +27,6 @@ export class OrderComponent implements OnInit {
   createOrder() {
     this.orderService.createOrder(this.order);
     this.cartService.removeAllProducts();
-    this.router.navigate(['']);
+    this.store.dispatch(RouterActions.go({path: ['']}));
   }
 }

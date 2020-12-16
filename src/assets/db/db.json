@@ -19,7 +19,7 @@
     {
       "id": 3,
       "name": "Apple iPhone 12 128GB Black",
-      "price": "899",
+      "price": "800",
       "rate": 4.3,
       "img": "assets/images/iphoneXr.jpg",
       "description": "Дисплей Super Retina XDR 6,1 дюйма Неймовірно міцна передня панель Ceramic ShieldA14 Bionic, найшвидший процесор iPhoneПередова система двох камер 12 Мп: надширококутна і ширококутна; Нічний режим, технологія Deep Fusion, режим Smart HDR 3, знімання HDR-відео 4K у стандарті Dolby VisionФронтальна камера TrueDepth 12 Мп: Нічний режим, знімання HDR-відео 4K у стандарті Dolby VisionНадійний захист від води (IP68)4"
@@ -27,7 +27,7 @@
     {
       "id": 4,
       "name": "Apple iPhone 11 Pro 128GB Gray",
-      "price": "1000",
+      "price": "1001",
       "rate": "4.4",
       "img": "assets/images/iphone11Pro.jpg",
       "description": "Дисплей Super Retina XDR 6,1 дюйма Неймовірно міцна передня панель Ceramic ShieldA14 Bionic, найшвидший процесор iPhoneПередова система двох камер 12 Мп: надширококутна і ширококутна; Нічний режим, технологія Deep Fusion, режим Smart HDR 3, знімання HDR-відео 4K у стандарті Dolby VisionФронтальна камера TrueDepth 12 Мп: Нічний режим, знімання HDR-відео 4K у стандарті Dolby VisionНадійний захист від води (IP68)4"
@@ -35,7 +35,7 @@
     {
       "id": 5,
       "name": "Apple iPhone 8 128GB White",
-      "price": 500,
+      "price": "501",
       "rate": 4.3,
       "img": "assets/images/iphone8.jpg",
       "description": "Дисплей Super Retina XDR 6,1 дюйма Неймовірно міцна передня панель Ceramic ShieldA14 Bionic, найшвидший процесор iPhoneПередова система двох камер 12 Мп: надширококутна і ширококутна; Нічний режим, технологія Deep Fusion, режим Smart HDR 3, знімання HDR-відео 4K у стандарті Dolby VisionФронтальна камера TrueDepth 12 Мп: Нічний режим, знімання HDR-відео 4K у стандарті Dolby VisionНадійний захист від води (IP68)4"
@@ -47,6 +47,38 @@
       "rate": "4.1",
       "img": "assets/images/iphoneXs.jpg",
       "description": "Good"
+    },
+    {
+      "id": 7,
+      "name": "uu",
+      "price": "1",
+      "rate": "1",
+      "img": "assets/images/iphoneXs.jpg",
+      "description": "1"
+    },
+    {
+      "id": 8,
+      "name": "777",
+      "price": "77",
+      "rate": "77",
+      "img": "assets/images/iphoneXs.jpg",
+      "description": "777"
+    },
+    {
+      "id": 9,
+      "name": "777",
+      "price": "777",
+      "rate": "7",
+      "img": "assets/images/iphoneXs.jpg",
+      "description": "7"
+    },
+    {
+      "id": 10,
+      "name": "uu",
+      "price": "100",
+      "rate": "7",
+      "img": "assets/images/iphoneXs.jpg",
+      "description": "7"
     }
   ]
 }

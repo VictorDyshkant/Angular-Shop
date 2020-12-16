@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProductService } from 'src/app/modules/product/services/products.service';
-import { ProductModel } from 'src/app/modules/product/models/product.model';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { Store, select } from '@ngrx/store';
+import { ProductsState } from 'src/app/ng.rx/products/products.state';
+import { selectProductsData } from 'src/app/ng.rx/products/products.selectors';
+import * as ProductActions from 'src/app/ng.rx/products/products.actions';
+import { ProductModel } from '../models/product.model';
 
 @Component({
   selector: 'app-product-list-component',
@@ -13,13 +16,15 @@ export class ProductListComponent implements OnInit {
 
   isAdmin: boolean;
   products$: Observable<Array<ProductModel>>;
-
-  constructor(private productService: ProductService,
-              private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private store: Store) {
   }
 
   ngOnInit(): void {
     this.isAdmin = this.authService.isAdmin;
-    this.products$ = this.productService.getProducts();
+    this.products$ = this.store.pipe(select(selectProductsData));
+ 
+    this.store.dispatch(ProductActions.getProducts());
   }
 }

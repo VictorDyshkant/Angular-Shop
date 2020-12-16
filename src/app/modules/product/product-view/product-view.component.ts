@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { select, Store } from '@ngrx/store';
 import { switchMap } from 'rxjs/operators';
 import { ProductModel } from 'src/app/modules/product/models/product.model';
+import { IAppState } from 'src/app/ng.rx/app.state';
 import { CartService } from '../../cart/services/cart.service';
 import { ProductService } from '../services/products.service';
+import * as ProductActions from 'src/app/ng.rx/products/products.actions';
+import { selectProductsState, selectSelectedProduct } from 'src/app/ng.rx/products/products.selectors';
 
 @Component({
   selector: 'app-product-view',
@@ -15,24 +19,25 @@ export class ProductViewComponent implements OnInit {
   isInBucket: boolean;
   product: ProductModel;
   constructor(private activateRoute: ActivatedRoute,
-    private productService: ProductService,
-    private cartService: CartService) {
+    private cartService: CartService,
+    private store: Store) {
   }
 
   ngOnInit(): void {
-    // может предусмотреть дефолтные значения? или задавать значения объектом
-    this.product = { ...this.product }; // new ProductModel(null, null, null, null, null, null);
-    this.isInBucket = false;
-
     this.activateRoute.paramMap.pipe(
       switchMap(params => {
-        const productId = params.get('productId');
-        return this.productService.getProductById(+productId);
+        const productId = +params.get('productId');
+
+        this.store.dispatch(ProductActions.getProduct({ productId }));
+        return this.store.pipe(select(selectSelectedProduct));
       })
-    ).subscribe(product => {
-      if (product != null) {
-        this.product = product;
+    ).subscribe(productState => {
+      if (productState != null) {
+        this.product = productState;
         this.isInBucket = this.cartService.contains(this.product);
+      } else {
+        this.product = new ProductModel(null, null, null, null, null, null);
+        this.isInBucket = false;
       }
     });
   }

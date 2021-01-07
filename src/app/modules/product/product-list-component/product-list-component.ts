@@ -24,7 +24,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.isAdmin = this.authService.isAdmin;
     this.products$ = this.store.pipe(select(selectProductsData));
- 
+
     this.store.dispatch(ProductActions.getProducts());
   }
 }

@@ -1,4 +1,4 @@
-<div class="card__container">
+<!-- <div class="card__container">
     <form #form='ngForm'>
         <div class="form-group">
             <label for="Name">First Name</label>
@@ -14,4 +14,110 @@
         <button class="btn" [disabled]="form.invalid || order.products.length === 0" (click)="createOrder()"
             [ngClass]="{'disabled__btn':form.invalid || order.products.length === 0}">Create Order</button>
     </form>
-</div>
+</div> -->
+
+
+<form class="form-group" [formGroup]="userForm">
+
+    <div>
+        <label for="Name">First Name</label>
+        <input type="text" class="form-control" id="Name" placeholder="Name (required)" formControlName="firstName"
+            [ngClass]="{'error':(userForm.get('firstName').dirty || userForm.get('firstName').touched) && userForm.get('firstName').invalid,'sucess':userForm.get('firstName').valid}">
+        <span class="help-block"
+            *ngIf="(userForm.get('firstName').dirty || userForm.get('firstName').touched) && userForm.get('firstName').invalid">
+            <span *ngIf="userForm.get('firstName').hasError('required')">
+                Please enter your name !!!
+            </span>
+            <span *ngIf="userForm.get('firstName').hasError('minlength')">
+                Min Length is 2 characters !!!
+            </span>
+            <span *ngIf="userForm.get('firstName').hasError('maxlength')">
+                Max Length is 15 characters !!!
+            </span>
+        </span>
+    </div>
+
+    <div>
+        <label for="LastName">Last Name</label>
+        <input type="text" class="form-control" id="LastName" placeholder="Last Name" formControlName="lastName"
+            [ngClass]="{'error':(userForm.get('lastName').dirty || userForm.get('lastName').touched) && userForm.get('lastName').invalid,'sucess':userForm.get('lastName').valid}">
+        <span class="help-block"
+            *ngIf="(userForm.get('lastName').dirty || userForm.get('lastName').touched) && userForm.get('lastName').invalid">
+            <span *ngIf="userForm.get('lastName').hasError('minlength')">
+                Min Length is 2 characters !!!
+            </span>
+            <span *ngIf="userForm.get('lastName').hasError('maxlength')">
+                Max Length is 15 characters !!!
+            </span>
+        </span>
+    </div>
+
+    <div>
+        <label for="Email">Email</label>
+        <input type="text" class="form-control" id="Email" placeholder="Email (required)" formControlName='email'
+            emailMatchValidator (blur)="onBlur()"
+            [ngClass]="{'error':validationMessage, 'sucess':userForm.get('email').valid}">
+        <span class="help-block" *ngIf="validationMessage">
+            {{validationMessage}}
+        </span>
+    </div>
+
+    <div formArrayName='phones'>
+        <div *ngFor="let phone of phones.controls; let i = index">
+            <div>
+                <label for="{{'Phone'+i.toString()}}">Phone</label>
+                <input type="text" class="form-control" id="Phone+{{i.toString()}}" placeholder="Phone (required)"
+                    [formControlName]='i'
+                    [ngClass]="{'error':(phones.get(i.toString()).dirty || phones.get(i.toString()).touched) && phones.get(i.toString()).invalid, 'sucess':phones.get(i.toString()).valid }">
+                <span class="help-block"
+                    *ngIf="(phones.get(i.toString()).dirty || phones.get(i.toString()).touched) && phones.get(i.toString()).invalid">
+                    <span *ngIf="phones.get(i.toString()).hasError('required')">
+                        Please enter phone number!!!
+                    </span>
+                    <span *ngIf="phones.get(i.toString()).hasError('minlength')">
+                        Min Length is 10 characters !!!
+                    </span>
+                    <span *ngIf="phones.get(i.toString()).hasError('maxlength')">
+                        Max Length is 13 characters !!!
+                    </span>
+                </span>
+            </div>
+
+            <div class="col-md-1" *ngIf="i>0">
+                <button class="btn btn-danger" (click)="onRemovePhone(i)">X</button>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="button" (click)="onAddPhone()">
+            Add Phone
+        </button>
+    </div>
+
+    <div>
+        <label for="Delivery">Delivery</label>
+        <input type="checkbox" id="Delivery" formControlName='delivery'>
+    </div>
+
+    <div *ngIf="userForm.get('delivery').value">
+        <label for="Adress">Adress</label>
+        <textarea id="Adress" class="form-control" placeholder="Adress" formControlName="adress"
+            [ngClass]="{'error':(userForm.get('adress').dirty || userForm.get('adress').touched) && userForm.get('adress').invalid,'sucess':userForm.get('adress').valid}"></textarea>
+        <span class="help-block"
+            *ngIf="(userForm.get('adress').dirty || userForm.get('adress').touched) && userForm.get('adress').invalid">
+            <span *ngIf="userForm.get('adress').hasError('required')">
+                Please enter adress !!!
+            </span>
+            <span *ngIf="userForm.get('adress').hasError('minlength')">
+                Adress is 10 characters !!!
+            </span>
+            <span *ngIf="userForm.get('adress').hasError('maxlength')">
+                Adress is 50 characters !!!
+            </span>
+        </span>
+    </div>
+
+    <button class="custom_btn" [disabled]="userForm.invalid" (click)="onCreateOrder()"
+        [ngClass]="{'disabled__btn':userForm.invalid}">Create Order</button>
+    <button class="custom_btn" [disabled]="userForm.valid" (click)="onShowErrors()"
+        [ngClass]="{'disabled__btn':userForm.valid}">Create Order</button>
+</form>

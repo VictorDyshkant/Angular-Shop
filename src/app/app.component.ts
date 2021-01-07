@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   isAdmin: boolean;
 
   constructor(private authService: AuthService,
-    private appSettingsService: AppSettingsService) {
+              private appSettingsService: AppSettingsService) {
       appSettingsService.getSettings();
   }
 

@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import * as ProductActions from './products.actions'
+import * as ProductActions from './products.actions';
 // rxjs
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap, map, pluck, concatMap, concatMapTo } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import { ProductModel } from 'src/app/modules/product/models/product.model';
 @Injectable()
 export class ProductEffects {
     constructor(private actions$: Actions,
-        private productService: ProductService) {
+                private productService: ProductService) {
         console.log('[TASKS EFFECTS]');
     }
 

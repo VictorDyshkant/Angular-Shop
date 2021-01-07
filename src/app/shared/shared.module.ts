@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { HighlightDirective } from './directives/highlight.directive';
 import { ClickDirective } from './directives/click.directive';
 import { OrderByPipe } from './pipes/order-by.pipe';
+import { EmailMatchDirective } from './directives/email.directive';
 
 @NgModule({
   declarations: [
     HighlightDirective,
     ClickDirective,
-    OrderByPipe
+    OrderByPipe,
+    EmailMatchDirective
   ],
   imports: [
     CommonModule

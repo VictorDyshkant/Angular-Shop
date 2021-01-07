@@ -14,7 +14,7 @@ export class CartService {
     private isEmptyList = true;
 
     constructor(private localStorageService: LocalStorageService,
-        private productService: ProductService) {
+                private productService: ProductService) {
         this.selectProducts();
     }
 

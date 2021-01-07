@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng serve --aot",
     "start": "concurrently --kill-others \"ng serve -o\" \"json-server --watch src\\assets\\db\\db.json\"",
-    "build": "ng build",
+    "build": "ng lint --fix && ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -23,6 +23,7 @@
     "@ngrx/router-store": "github:ngrx/router-store",
     "@ngrx/store": "^10.1.0",
     "@ngrx/store-devtools": "^10.1.0",
+    "bootstrap": "^5.0.0-beta1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

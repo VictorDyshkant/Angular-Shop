@@ -11,7 +11,7 @@ import { Store } from '@ngrx/store';
 })
 export class AuthGuard implements CanActivate {
     constructor(private authService: AuthService,
-        private store: Store) {
+                private store: Store) {
     }
 
     canActivate(

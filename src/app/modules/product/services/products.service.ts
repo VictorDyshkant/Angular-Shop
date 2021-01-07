@@ -7,7 +7,7 @@ import { catchError, concatMap, retry, share } from 'rxjs/operators';
 @Injectable()
 export class ProductService {
 
-    private baseUrl: string = "http://localhost:3000";
+    private baseUrl = 'http://localhost:3000';
 
     constructor(private httpClient: HttpClient) {
     }

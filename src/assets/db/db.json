@@ -47,38 +47,6 @@
       "rate": "4.1",
       "img": "assets/images/iphoneXs.jpg",
       "description": "Good"
-    },
-    {
-      "id": 7,
-      "name": "uu",
-      "price": "1",
-      "rate": "1",
-      "img": "assets/images/iphoneXs.jpg",
-      "description": "1"
-    },
-    {
-      "id": 8,
-      "name": "777",
-      "price": "77",
-      "rate": "77",
-      "img": "assets/images/iphoneXs.jpg",
-      "description": "777"
-    },
-    {
-      "id": 9,
-      "name": "777",
-      "price": "777",
-      "rate": "7",
-      "img": "assets/images/iphoneXs.jpg",
-      "description": "7"
-    },
-    {
-      "id": 10,
-      "name": "uu",
-      "price": "100",
-      "rate": "7",
-      "img": "assets/images/iphoneXs.jpg",
-      "description": "7"
     }
   ]
 }

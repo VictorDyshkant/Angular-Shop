@@ -18,7 +18,7 @@ export class AdminProductComponent implements OnInit, OnDestroy {
   private sub: Subscription;
 
   constructor(private activateRoute: ActivatedRoute,
-    private store: Store) {
+              private store: Store) {
   }
 
 

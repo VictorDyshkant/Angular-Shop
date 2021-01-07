@@ -1,8 +1,8 @@
 import { ProductModel } from 'src/app/modules/product/models/product.model';
 
 export interface ProductsState {
-  readonly data: Array<ProductModel>,
-  readonly selectedProduct: ProductModel,
+  readonly data: Array<ProductModel>;
+  readonly selectedProduct: ProductModel;
   readonly loading: boolean;
   readonly loaded: boolean;
   readonly error: Error | string;

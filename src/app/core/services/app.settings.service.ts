@@ -8,16 +8,16 @@ import { LocalStorageService } from './local-storage.service';
 @Injectable({ providedIn: 'root' })
 export class AppSettingsService {
 
-    private key: string = 'AppSettingsService';
+    private key = 'AppSettingsService';
     public appSettings: AppSettingsModel;
 
     constructor(private localStorageService: LocalStorageService,
-        private httpClient: HttpClient) {
+                private httpClient: HttpClient) {
     }
 
     getSettings(): void {
         if (this.appSettings == null) {
-            this.appSettings = <AppSettingsModel>this.localStorageService.getItem(this.key);
+            this.appSettings = (this.localStorageService.getItem(this.key) as AppSettingsModel);
             if (this.appSettings == null) {
 
                 this.httpClient
@@ -28,12 +28,12 @@ export class AppSettingsService {
                     )
                     .subscribe((appSettings: AppSettingsModel) => {
                         if (appSettings != null) {
-                            this.appSettings = appSettings
+                            this.appSettings = appSettings;
                             this.localStorageService.setItem(this.key, appSettings);
                         }
                         else {
-                            this.appSettings = new AppSettingsModel("Anhular-Shop", "Victor Dyshkant", "Epam Systems");
-                            this.localStorageService.setItem(this.key, this.appSettings)
+                            this.appSettings = new AppSettingsModel('Anhular-Shop', 'Victor Dyshkant', 'Epam Systems');
+                            this.localStorageService.setItem(this.key, this.appSettings);
                         }
                     });
             }

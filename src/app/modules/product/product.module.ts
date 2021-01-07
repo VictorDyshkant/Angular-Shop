@@ -33,7 +33,7 @@ const routes: Routes = [
     ProductListComponent,
     RouterModule
   ],
-  providers:[
+  providers: [
     ProductService,
   ]
 })

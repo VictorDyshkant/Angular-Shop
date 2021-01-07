@@ -21,7 +21,7 @@ export class ProductResolveGuard implements Resolve<ProductModel> {
         }
 
         const productId = +route.paramMap.get('productId');
-        this.store.dispatch(ProductActions.getProduct({ productId }))
+        this.store.dispatch(ProductActions.getProduct({ productId }));
 
         return this.store.pipe(
             select(selectSelectedProduct),

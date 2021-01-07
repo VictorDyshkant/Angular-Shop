@@ -8,8 +8,8 @@ import { Injectable } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class RouterEffects {
   constructor(private actions$: Actions,
-    private router: Router,
-    private location: Location) {
+              private router: Router,
+              private location: Location) {
   }
 
   navigate$ = createEffect(() =>

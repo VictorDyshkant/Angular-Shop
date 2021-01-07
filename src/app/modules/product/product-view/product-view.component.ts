@@ -19,8 +19,8 @@ export class ProductViewComponent implements OnInit {
   isInBucket: boolean;
   product: ProductModel;
   constructor(private activateRoute: ActivatedRoute,
-    private cartService: CartService,
-    private store: Store) {
+              private cartService: CartService,
+              private store: Store) {
   }
 
   ngOnInit(): void {

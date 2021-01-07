@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { initialProductsState, ProductsState } from './products.state';
-import * as ProductActions from './products.actions'
+import * as ProductActions from './products.actions';
 
 const reducer = createReducer(
   initialProductsState,
@@ -15,7 +15,7 @@ const reducer = createReducer(
   }),
   on(ProductActions.getProductsError, (state, { error }) => {
     console.log('getProductsError action being handled!');
-    return { ...state, loading: false, loaded: false, error: error };
+    return { ...state, loading: false, loaded: false, error };
   }),
 
   on(ProductActions.getProduct, state => {
@@ -24,11 +24,11 @@ const reducer = createReducer(
   }),
   on(ProductActions.getProductSuccess, (state, { product }) => {
     console.log('getProductSuccess action being handled!');
-    return { ...state, loading: false, loaded: true, selectedProduct: product, eror: null }
+    return { ...state, loading: false, loaded: true, selectedProduct: product, eror: null };
   }),
   on(ProductActions.getProductError, (state, { error }) => {
     console.log('getProductError action being handled!');
-    return { ...state, loading: false, loaded: true, error: error }
+    return { ...state, loading: false, loaded: true, error };
   }),
 
   on(ProductActions.createProduct,
@@ -40,19 +40,19 @@ const reducer = createReducer(
     }),
   on(ProductActions.createProductSuccess, (state, { product }) => {
     console.log('createProductSuccess action being handled!');
-    state.data.push(product)
+    state.data.push(product);
     return { ...state, loading: true, loaded: false, eror: null };
   }),
   on(ProductActions.updateProductSuccess, (state, { product }) => {
     console.log('updateProductSuccess action being handled!');
-    let index = state.data.findIndex(x => x.id === product.id);
+    const index = state.data.findIndex(x => x.id === product.id);
     state.data[index] = { ...product };
     return { ...state, loading: true, loaded: false, eror: null };
   }),
   on(ProductActions.deleteProductSuccess, (state, { product }) => {
     console.log('deleteProductSuccess action being handled!');
-    let index = state.data.findIndex(x => x.id === product.id);
-    state.data.splice(index, 1)
+    const index = state.data.findIndex(x => x.id === product.id);
+    state.data.splice(index, 1);
     return { ...state, loading: true, loaded: false, eror: null };
   }),
   on(ProductActions.createProductError,
@@ -60,7 +60,7 @@ const reducer = createReducer(
     ProductActions.deleteProductError,
     (state, { error }) => {
       console.log('error action being handled!');
-      return { ...state, loading: true, loaded: false, error: error };
+      return { ...state, loading: true, loaded: false, error };
     })
 
 

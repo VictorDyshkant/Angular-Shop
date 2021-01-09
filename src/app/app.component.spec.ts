@@ -1,35 +1,25 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { AuthService } from './core/services/auth.service';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
+ 
+    let authService: AuthService;
+    let appComponent: AppComponent;
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+    beforeEach(() => {
+        authService = TestBed.inject(AuthService);
+        appComponent = new AppComponent(authService);
+    });
 
-  it(`should have as title 'Angular-Shop'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Angular-Shop');
-  });
+    it('should populate correct status of user admin', () => {
+        // Arrange
+        authService.isAdmin = true;
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Angular-Shop app is running!');
-  });
+        // Act
+        appComponent.ngOnInit();
+
+        // Assert
+        expect(appComponent.isAdmin).toBeTrue();
+    });
 });

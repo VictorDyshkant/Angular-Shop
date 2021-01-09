@@ -3,7 +3,7 @@
 </div>
 
 <ng-template #tableBlock>
-    <div>Quantity: {{count}}; Total amount: {{amount}}$</div>
+    <div id="header">Quantity: {{count}}; Total amount: {{amount}}$</div>
     Products you bought:
     <br>
     <br>
@@ -48,4 +48,6 @@
     </table>
 </ng-template>
 
-<ng-template #emptyBlock>You did not bought any product</ng-template>
+<ng-template #emptyBlock>
+    <p id="emptyBlock">You did not bought any product<p>
+</ng-template>

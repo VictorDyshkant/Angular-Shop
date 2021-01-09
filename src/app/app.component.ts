@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from './core/services/auth.service';
-import { AppSettingsService } from './core/services/app.settings.service';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +10,7 @@ import { AppSettingsService } from './core/services/app.settings.service';
 export class AppComponent implements OnInit {
   isAdmin: boolean;
 
-  constructor(private authService: AuthService,
-              private appSettingsService: AppSettingsService) {
-      appSettingsService.getSettings();
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {

@@ -12,7 +12,6 @@ import { CartService } from 'src/app/modules/cart/services/cart.service';
 })
 export class CartListComponent implements OnInit {
 
-  ref: string;
   $boughtProducts: Observable<Array<BoughtProductModel>>;
 
   constructor(private cartService: CartService) {
@@ -20,7 +19,6 @@ export class CartListComponent implements OnInit {
 
   ngOnInit(): void {
     this.$boughtProducts = this.cartService.getProducts();
-    this.ref = location.origin;
   }
 
   changeQuantity(product: ProductModel, quantity: number) {

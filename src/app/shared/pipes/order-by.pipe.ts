@@ -13,7 +13,6 @@ export class OrderByPipe implements PipeTransform {
         const cof = descending ? 1 : -1;
         const sortedArray = observable.pipe(map(arr => {
             arr.sort((a, b) => {
-
                 if (a.product[value] > b.product[value]) {
                     return cof * 1;
                 }
